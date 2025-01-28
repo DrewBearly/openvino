@@ -30,7 +30,8 @@ private:
         auto prog_id = ((m_program != nullptr) ? m_program->get_id() : 0);
         auto net_id = m_network.get_id();
 
-        return "program" + std::to_string(prog_id) + "_network" + std::to_string(net_id) + "_" + get_iteration_prefix() + m_inst.id();
+        return "program" + std::to_string(prog_id) + "_" + std::to_string(m_inst.exec_order()) + "_network" +
+        std::to_string(net_id) + "_" + get_iteration_prefix() + m_inst.id();
     }
 
 

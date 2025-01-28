@@ -797,10 +797,14 @@ void network::execute_impl(const std::vector<event::ptr>& events) {
     const bool needs_flushing = _is_dynamic;
     const size_t flush_frequency = needs_flushing ? 16 : 0;
     size_t executed_prims = 0;
+    int32_t execIndex = 0;
 
     for (auto& inst : _exec_order) {
+        #ifdef GPU_DEBUG_CONFIG
+        inst->set_exec_order(execIndex);
+        execIndex++;
         NODE_DEBUG(*inst);
-
+        #endif //GPU_DEBUG_CONFIG
         inst->reset_events();
 
         if (inst->is_input()) {

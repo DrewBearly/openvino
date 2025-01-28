@@ -189,6 +189,8 @@ public:
     primitive_type_id type() const { return _type; }
     const primitive_id& id() const { return _id; }
     const primitive_id& org_id() const { return _org_id; }
+    const int32_t& exec_order() const { return _exec_order_id; }
+    void set_exec_order(int exec_order_id) { _exec_order_id = exec_order_id; }
     bool can_be_optimized() const { return _can_be_optimized; }
     void set_can_be_optimized(bool optimized) {
         // TODO: consolidate to _impl_param in the future
@@ -394,6 +396,7 @@ protected:
     primitive_type_id _type;
     primitive_id _id;
     primitive_id _org_id;
+    int32_t _exec_order_id = 0;
     bool _is_input = false;
     bool _is_output = false;
     size_t _inputs_memory_count = 0;

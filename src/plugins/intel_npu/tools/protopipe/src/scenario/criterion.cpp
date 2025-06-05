@@ -35,7 +35,7 @@ bool TimeOut::check() const {
     return utils::timestamp<std::chrono::microseconds>() - m_start_ts < m_time_in_us;
 }
 
-void TimeOut::update(){/* do nothing */};
+void TimeOut::update() {/* do nothing */}
 
 void TimeOut::init() {
     m_start_ts = utils::timestamp<std::chrono::microseconds>();
@@ -60,7 +60,7 @@ bool CombinedCriterion::check() const {
 void CombinedCriterion::update() {
     m_lhs->update();
     m_rhs->update();
-};
+}
 
 void CombinedCriterion::init() {
     m_lhs->init();

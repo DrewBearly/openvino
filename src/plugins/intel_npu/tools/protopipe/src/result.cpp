@@ -6,8 +6,8 @@
 #include "result.hpp"
 #include "utils/error.hpp"
 
-Result::Result(const Error& error): m_status(error){};
-Result::Result(const Success& success): m_status(success){};
+Result::Result(const Error& error): m_status(error) {}
+Result::Result(const Success& success): m_status(success) {}
 
 Result::operator bool() const {
     return std::holds_alternative<Success>(m_status);

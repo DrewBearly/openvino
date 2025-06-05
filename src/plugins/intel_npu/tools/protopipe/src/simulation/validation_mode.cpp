@@ -61,12 +61,12 @@ struct InputDataVisitor {
 void InputDataVisitor::operator()(std::monostate) {
     THROW_ERROR("Validation mode requires input data path to be provided"
                 " in form of either directory or single file!");
-};
+}
 
 void InputDataVisitor::operator()(const LayerVariantAttr<std::string>&) {
     THROW_ERROR("Validation mode requires input data path to be provided"
                 " in form of either directory or single file!");
-};
+}
 
 void InputDataVisitor::operator()(const std::string& path_str) {
     std::filesystem::path path{path_str};
@@ -74,7 +74,7 @@ void InputDataVisitor::operator()(const std::string& path_str) {
                << std::endl;
     auto layers_data = uploadData(path, infer.tag, infer.input_layers, LayersType::INPUT);
     providers = createConstantProviders(std::move(layers_data), extractLayerNames(infer.input_layers));
-};
+}
 
 struct OutputDataVisitor {
     OutputDataVisitor(const InferDesc& _infer, const ValSimulation::Options& _opts)
@@ -261,7 +261,7 @@ Result SyncSimulation::run(ITermCriterion::Ptr criterion) {
     auto cb = std::bind(&SyncSimulation::process, this, _1);
     m_exec.runLoop(cb, criterion);
     return reportValidationResult(m_failed_iters, m_iter_idx);
-};
+}
 
 bool SyncSimulation::process(cv::GCompiled& pipeline) {
     auto pipeline_outputs = cv::gout();
@@ -307,7 +307,7 @@ Result PipelinedSimulation::run(ITermCriterion::Ptr criterion) {
     auto cb = std::bind(&PipelinedSimulation::process, this, _1);
     m_exec.runLoop(std::move(pipeline_inputs), cb, criterion);
     return reportValidationResult(m_failed_iters, m_iter_idx);
-};
+}
 
 bool PipelinedSimulation::process(cv::GStreamingCompiled& pipeline) {
     cv::GOptRunArgsP pipeline_outputs;
@@ -354,7 +354,6 @@ std::shared_ptr<SyncCompiled> ValSimulation::compileSync(DummySources&& sources,
                    << " parallel branches in graph,"
                       " so threaded executor will be used"
                    << std::endl;
-        ;
         compile_args += cv::compile_args(cv::use_threaded_executor{max_parallel_branches});
     }
     auto compiled = m_comp.compile(descr_of(sources), std::move(compile_args));

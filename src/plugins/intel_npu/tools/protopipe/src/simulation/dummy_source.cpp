@@ -86,4 +86,4 @@ cv::GMetaArg DummySource::descr_of() const {
 void DummySource::reset() {
     m_next_tick_ts = -1;
     m_curr_seq_id = 0;
-};
+}

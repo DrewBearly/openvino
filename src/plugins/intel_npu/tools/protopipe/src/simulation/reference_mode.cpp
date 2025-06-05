@@ -39,12 +39,12 @@ struct InputDataVisitor {
 void InputDataVisitor::operator()(std::monostate) {
     THROW_ERROR("Reference mode requires output data path to be provided"
                 " in form of either directory or single file!");
-};
+}
 
 void InputDataVisitor::operator()(const LayerVariantAttr<std::string>&) {
     THROW_ERROR("Reference mode requires output data path to be provided"
                 " in form of either directory or single file!");
-};
+}
 
 void InputDataVisitor::operator()(const std::string& path_str) {
     // NB: Single path provided - either single file or directory.
@@ -204,7 +204,7 @@ static void dumpIterOutput(const cv::Mat& mat, const Dump& dump, const size_t it
         dump_path = dump_path / ss.str();
     }
     utils::writeToBinFile(dump_path.string(), mat);
-};
+}
 
 namespace {
 
@@ -266,7 +266,7 @@ Result SyncSimulation::run(ITermCriterion::Ptr criterion) {
     std::stringstream ss;
     ss << "Reference data has been generated for " << m_iter_idx << " iteration(s)";
     return Success{ss.str()};
-};
+}
 
 bool SyncSimulation::process(cv::GCompiled& pipeline) {
     auto pipeline_outputs = cv::gout();
@@ -317,7 +317,7 @@ Result PipelinedSimulation::run(ITermCriterion::Ptr criterion) {
     std::stringstream ss;
     ss << "Reference data has been generated for " << m_iter_idx << " iteration(s)";
     return Success{ss.str()};
-};
+}
 
 bool PipelinedSimulation::process(cv::GStreamingCompiled& pipeline) {
     cv::GOptRunArgsP pipeline_outputs;

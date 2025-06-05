@@ -7,7 +7,7 @@
 
 DataNode::DataNode(Graph* graph, NodeHandle nh): m_nh(nh) {
     graph->meta(nh).set(Data{});
-};
+}
 
 OpNode::OpNode(NodeHandle nh, DataNode out_data): m_nh(nh), m_out_data(out_data) {
 }

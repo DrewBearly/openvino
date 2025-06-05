@@ -108,13 +108,13 @@ cv::gapi::GNetPackage Simulation::getNetworksPackage() const {
     return networks;
 }
 
-Simulation::Simulation(Config&& cfg): m_cfg(std::move(cfg)){};
+Simulation::Simulation(Config&& cfg): m_cfg(std::move(cfg)) {}
 
 std::vector<DummySource::Ptr> Simulation::createSources(const bool drop_frames) {
     auto src = std::make_shared<DummySource>(m_cfg.frames_interval_in_us, drop_frames,
                                              m_cfg.disable_high_resolution_timer);
     return {src};
-};
+}
 
 std::shared_ptr<PipelinedCompiled> Simulation::compilePipelined(const bool drop_frames) {
     if (drop_frames) {
@@ -133,7 +133,7 @@ std::shared_ptr<SyncCompiled> Simulation::compileSync(const bool drop_frames) {
 
 std::shared_ptr<PipelinedCompiled> Simulation::compilePipelined(DummySources&&, cv::GCompileArgs&&) {
     THROW_ERROR("Not implemented!");
-};
+}
 
 std::shared_ptr<SyncCompiled> Simulation::compileSync(DummySources&&, cv::GCompileArgs&&) {
     THROW_ERROR("Not implemented!");

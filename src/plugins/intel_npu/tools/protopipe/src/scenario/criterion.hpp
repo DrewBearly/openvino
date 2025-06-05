@@ -6,6 +6,7 @@
 #pragma once
 
 #include <memory>
+#include <stdint.h>
 
 struct ITermCriterion {
     using Ptr = std::shared_ptr<ITermCriterion>;

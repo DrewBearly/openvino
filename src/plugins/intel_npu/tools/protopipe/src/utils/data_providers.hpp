@@ -31,7 +31,7 @@ public:
     using Ptr = std::shared_ptr<UniformGenerator>;
     UniformGenerator(double low, double high);
     void generate(cv::Mat& mat) override;
-    virtual std::string str() const override;
+    std::string str() const override;
 
 private:
     double m_low, m_high;

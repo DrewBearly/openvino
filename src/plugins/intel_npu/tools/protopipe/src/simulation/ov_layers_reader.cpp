@@ -78,7 +78,7 @@ std::vector<LayerInfo> ovToLayersInfo(const InfoVec& vec) {
         return LayerInfo{node.get_any_name(), toDims(node.get_shape()), toPrecision(node.get_element_type())};
     });
     return layers;
-};
+}
 
 static void cfgInputPreproc(ov::preprocess::PrePostProcessor& ppp, const std::shared_ptr<ov::Model>& model,
                             const AttrMap<int>& input_precision, const AttrMap<std::string>& input_layout,
@@ -128,7 +128,7 @@ static void cfgOutputPostproc(ov::preprocess::PrePostProcessor& ppp, const std::
     }
 }
 
-static void cfgReshape(const std::shared_ptr<ov::Model>& model, 
+static void cfgReshape(const std::shared_ptr<ov::Model>& model,
                        const AttrMap<std::vector<size_t>> reshape_map) {
     std::map<std::string, ov::PartialShape> partial_shapes;
     for (const auto& [layer_name, shape] : reshape_map) {

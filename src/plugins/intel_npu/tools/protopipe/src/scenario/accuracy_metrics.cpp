@@ -7,7 +7,7 @@
 
 #include "utils/error.hpp"
 
-Norm::Norm(const double tolerance): m_tolerance(tolerance){};
+Norm::Norm(const double tolerance): m_tolerance(tolerance) {}
 
 Result Norm::compare(const cv::Mat& lhs, const cv::Mat& rhs) {
     cv::Mat lhsf32, rhsf32;
@@ -31,7 +31,7 @@ std::string Norm::str() {
     return ss.str();
 }
 
-Cosine::Cosine(const double threshold): m_threshold(threshold){};
+Cosine::Cosine(const double threshold): m_threshold(threshold) {}
 
 Result Cosine::compare(const cv::Mat& lhs, const cv::Mat& rhs) {
     cv::Mat lhsf32, rhsf32;
@@ -75,7 +75,7 @@ std::string Cosine::str() {
     return ss.str();
 }
 
-NRMSE::NRMSE(const double tolerance): m_tolerance(tolerance){};
+NRMSE::NRMSE(const double tolerance): m_tolerance(tolerance) {}
 
 Result NRMSE::compare(const cv::Mat& lhs, const cv::Mat& rhs) {
     cv::Mat lhsf32, rhsf32;

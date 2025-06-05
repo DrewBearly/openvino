@@ -54,19 +54,16 @@ struct DummyCall {
 
 using F = std::function<void()>;
 
-G_TYPED_KERNEL(GCompound, <cv::GMat(cv::GMat, F)>, "custom.compound")
-{
+G_TYPED_KERNEL(GCompound, <cv::GMat(cv::GMat, F)>, "custom.compound"){
     static cv::GMatDesc outMeta(cv::GMatDesc in, F){
         return in;
     }
 };
 
-GAPI_OCV_KERNEL(GCPUCompound, GCompound)
-{
+GAPI_OCV_KERNEL(GCPUCompound, GCompound){
     static void run(const cv::Mat& in,
                     F function,
-                    cv::Mat& out)
-    {
+                    cv::Mat& out){
         function();
     }
 };

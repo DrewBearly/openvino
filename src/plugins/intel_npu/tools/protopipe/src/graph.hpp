@@ -12,6 +12,7 @@
 #include <unordered_map>
 #include <unordered_set>
 #include <vector>
+#include <stdint.h>
 
 #include "utils/error.hpp"
 

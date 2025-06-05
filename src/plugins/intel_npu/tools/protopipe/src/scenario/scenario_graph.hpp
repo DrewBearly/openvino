@@ -6,7 +6,7 @@
 #pragma once
 
 #include <functional>
-
+#include <stdint.h>
 #include "graph.hpp"
 #include "scenario/accuracy_metrics.hpp"
 #include "scenario/inference.hpp"

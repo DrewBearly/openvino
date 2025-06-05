@@ -26,7 +26,7 @@ Logger::~Logger() {
             std::cout << "[ DEBUG ] " << m_ss.str();
             break;
         default:
-                /* do nothing */;
+               /* do nothing */{}
         }
     }
 }

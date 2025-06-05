@@ -22,7 +22,7 @@ std::string normalizeLayerName(const std::string& layer_name) {
             },
             '_');
     return normalized;
-};
+}
 
 std::vector<cv::Mat> uploadLayerData(const std::filesystem::path& path, const std::string& tag,
                                      const LayerInfo& layer) {

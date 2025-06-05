@@ -157,7 +157,7 @@ void OpBuilder::build(NodeHandle nh, const Infer& infer) {
 
     InferCall infer_call{desc.tag, extractLayerNames(desc.input_layers), extractLayerNames(desc.output_layers)};
     graph.meta(infer_nh).set(GOperation{std::move(infer_call)});
-};
+}
 
 static bool fuseDelay(Graph& graph, NodeHandle nh, const Delay& delay) {
     // NB: Current fusing is trivial and applied only for the following case:
@@ -216,7 +216,7 @@ static void visit(NodeHandle nh, std::unordered_map<NodeHandle, NodeState>& stat
         }
     }
     curr_node_it->second = NodeState::VISITED;
-};
+}
 
 namespace passes {
 
@@ -253,7 +253,7 @@ void init(Graph& graph) {
         }
     }
     ASSERT(num_sources != 0);
-};
+}
 
 // NB: Fuses delay to the inference nodes as the delay can be performed
 // as part of the model dummy preprocessing
@@ -280,7 +280,7 @@ void fuseDelays(Graph& graph) {
             break;
         }
     }
-};
+}
 
 // NB: Finds the maximum parallelism depth to tell concurrent executor
 // how many threads should be used for execution
@@ -358,7 +358,7 @@ void buildOperations(Graph& graph, IBuildStrategy::Ptr strategy, const Inference
             graph.meta(nh).set(GraphOutput{});
         }
     }
-};
+}
 
 void buildComputation(Graph& graph, Protocol& proto) {
     cv::GProtoArgs graph_inputs;

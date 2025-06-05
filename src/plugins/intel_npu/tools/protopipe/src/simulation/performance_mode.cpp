@@ -80,7 +80,7 @@ void InputDataVisitor::operator()(std::monostate) {
     auto per_layer_initializers =
             unpackWithDefault(initializers, extractLayerNames(infer.input_layers), default_initialzer);
     providers = createRandomProviders(infer.input_layers, per_layer_initializers);
-};
+}
 
 void InputDataVisitor::operator()(const std::string& path_str) {
     const std::filesystem::path path{path_str};
@@ -103,11 +103,11 @@ void InputDataVisitor::operator()(const std::string& path_str) {
 
 void InputDataVisitor::operator()(const LayerVariantAttr<std::string>&) {
     THROW_ERROR("Performance mode supports input data in form of either directory or single file!");
-};
+}
 
 }  // anonymous namespace
 
-PerformanceStrategy::PerformanceStrategy(const PerformanceSimulation::Options& _opts): opts(_opts){};
+PerformanceStrategy::PerformanceStrategy(const PerformanceSimulation::Options& _opts): opts(_opts) {}
 
 IBuildStrategy::InferBuildInfo PerformanceStrategy::build(const InferDesc& infer) {
     const auto& input_data = opts.input_data_map.at(infer.tag);
@@ -185,7 +185,7 @@ void SyncSimulation::reset() {
         src->reset();
     }
     m_exec.reset();
-};
+}
 
 Result SyncSimulation::run(ITermCriterion::Ptr criterion) {
     using namespace std::placeholders;
@@ -198,7 +198,7 @@ Result SyncSimulation::run(ITermCriterion::Ptr criterion) {
     ss << metrics;
     this->reset();
     return Success{ss.str()};
-};
+}
 
 bool SyncSimulation::process(cv::GCompiled& pipeline) {
     using ts_t = std::chrono::microseconds;
@@ -260,7 +260,7 @@ Result PipelinedSimulation::run(ITermCriterion::Ptr criterion) {
         src->reset();
     }
     return Success{ss.str()};
-};
+}
 
 bool PipelinedSimulation::process(cv::GStreamingCompiled& pipeline) {
     using ts_t = std::chrono::microseconds;
@@ -311,7 +311,6 @@ std::shared_ptr<SyncCompiled> PerformanceSimulation::compileSync(const bool drop
                    << " parallel branches in graph,"
                       " so threaded executor will be used"
                    << std::endl;
-        ;
         compile_args += cv::compile_args(cv::use_threaded_executor{max_parallel_branches});
     }
 
